@@ -1,6 +1,6 @@
 <?php
 
-require "db-conn.php";
+require "connection.php";
 
 // Menangani query SELECT
 function fetch($query) {
