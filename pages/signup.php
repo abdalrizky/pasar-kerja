@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gampang Cari Kerja - Pasar Kerja</title>
+    <title>Daftar - Pasar Kerja</title>
 </head>
 <body>
-    
+    <script src="js/signup.js"></script>
 </body>
 </html>
