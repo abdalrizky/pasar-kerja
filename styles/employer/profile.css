@@ -1,0 +1,115 @@
+@import "../style.css";
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 100vh;
+}
+
+.user-action-logout {
+    display: inline-flex;
+}
+
+.user-action-logout-logo {
+    margin-right: 8px;
+}
+
+.profile-photo {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.main-content {
+    padding: 30px;
+    background-color: #f3f6fb;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+/* Sidebar Styling */
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .sidebar-on {
+    background-color: #e4e8f0;
+    color: #5A67D8;
+    border-radius: 16px;
+}
+
+.sidebar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #5A67D8;
+    margin-bottom: 3rem;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 1.5rem;
+}
+
+.sidebar nav ul li a {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-right: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    color: #5A67D8;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 1.5rem;
+    
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #333;
+    border-radius: 16px;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar nav ul li a span {
+    margin-right: 10px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #e4e8f0;
+    color: #5A67D8;
+    border-radius: 16px;
+}
+
+.icon {
+    margin-right: 12px;
+}
+
+.change-password-form {
+    border: 1px solid #333;
+}
