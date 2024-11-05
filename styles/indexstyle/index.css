@@ -1,0 +1,178 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Gaya untuk keseluruhan halaman */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #0077b6; /* Warna biru untuk header */
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Gaya untuk bagian utama */
+main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Formulir pencarian */
+.search-jobs {
+    background-color: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-jobs h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-jobs form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-jobs input[type="text"],
+.search-jobs select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.search-jobs button {
+    padding: 0.75rem 2rem;
+    background-color: #0077b6; /* Biru untuk tombol */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.search-jobs button:hover {
+    background-color: #0096c7;
+}
+
+/* Kategori pekerjaan */
+.job-categories {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-categories h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.job-categories .categories a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #fb8500; /* Warna oranye untuk tombol kategori */
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.job-categories .categories a:hover {
+    background-color: #ffb703;
+}
+
+/* Lowongan terbaru */
+.latest-jobs {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.latest-jobs h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.latest-jobs ul {
+    list-style: none;
+}
+
+.latest-jobs li {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.latest-jobs li h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.latest-jobs li p {
+    color: #555;
+    margin-bottom: 0.25rem;
+}
+
+.latest-jobs li a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.latest-jobs li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
