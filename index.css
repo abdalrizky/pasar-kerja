@@ -1,0 +1,259 @@
+/* Menggunakan font Poppins */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #333;
+}
+
+/* Gaya untuk header */
+header {
+    background-color: #1e90ff; /* Biru */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around; /* Mempertahankan pengaturan ini */
+    align-items: center;
+    color: #FFFFFF;
+}
+
+/* Logo */
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+    display: inline;
+}
+
+.logo .pasar {
+    color: #FFFFFF;
+}
+
+.logo .kerja {
+    color: #FFA500; /* Oranye */
+    font-style: italic;
+}
+
+/* Gaya untuk navigasi */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Tombol Login dan Register */
+nav ul li a.button {
+    padding: 0.5rem 1rem;
+    border: 2px solid #FFA500; /* Oranye */
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a.button:hover {
+    background-color: #FFA500; /* Oranye */
+    color: #FFFFFF;
+}
+
+/* Gaya untuk bagian pencarian lowongan */
+.search-jobs {
+    padding: 2rem;
+    background-color: #f0f0f0; /* Abu-abu muda */
+    margin: 2rem;
+    border-radius: 8px;
+}
+
+.search-jobs form {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-jobs input,
+.search-jobs select,
+.search-jobs button {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Gaya untuk bagian pencarian lowongan */
+.search-jobs {
+    padding: 2rem;
+    background-image: url('kerja1.jpg'); /* Ganti dengan nama file gambar kamu */
+    background-size: cover; /* Menyesuaikan ukuran gambar */
+    background-position: center; /* Memposisikan gambar di tengah */
+    margin: 2rem;
+    border-radius: 8px;
+    color: #fff; /* Mengubah warna teks agar kontras dengan background */
+}
+
+/* Gaya untuk teks dalam form */
+.search-jobs h2 {
+    color: #fff; /* Mengubah warna judul agar terlihat di atas gambar */
+}
+
+.trusted-by {
+    padding: 2rem;
+    margin: 2rem;
+    text-align: center;
+}
+
+.trusted-by h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.trusted-logos {
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.logos {
+    display: flex; /* Menampilkan logo secara horizontal */
+    justify-content: center; /* Memposisikan logo di tengah */
+    gap: 1rem; /* Jarak antar logo */
+}
+
+.trusted-logos img {
+    width: 50px; /* Ukuran lebar gambar logo yang lebih kecil */
+    height: auto; /* Memastikan proporsi gambar tetap terjaga */
+    border: 1px solid #ddd; /* Border untuk memisahkan logo */
+    border-radius: 5px; /* Sudut melengkung */
+    background-color: #fff; /* Latar belakang putih untuk kontras */
+    padding: 0.5rem; /* Memberi jarak antara gambar dan border */
+}
+
+
+
+.trusted-logos img:hover {
+    transform: scale(1.05); /* Efek zoom saat di-hover */
+}
+
+
+/* Gaya untuk kategori pekerjaan */
+.job-categories .categories {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Styling untuk kategori */
+/* Mengatur posisi gambar awal agar tidak terlihat */
+.job-categories .category {
+    position: relative;
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 1rem 1.5rem;
+    background-color: #e0e0e0;
+    text-decoration: none;
+    color: #333333;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(7, 106, 253, 0);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.job-categories .category:hover {
+    background-color: #1e90ff;
+    color: #fff;
+}
+
+.job-categories .category .popup-image {
+    position: absolute;
+    bottom: 100%; /* Posisi di bawah elemen kategori */
+    left: 50%;
+    transform: translateX(-50%) translateY(30px); /* Agar muncul dari bawah */
+    width: 200px;
+    max-height: 150px;
+    opacity: 0;
+    border-radius: 5px;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Saat kategori di-hover, munculkan gambar */
+.job-categories .category:hover .popup-image {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.job-categories .category img {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* Membatasi tinggi maksimum */
+    border-radius: 5px; /* Memberikan sedikit lengkungan pada gambar */
+    margin-bottom: 0.5rem;
+}
+
+.job-categories .category span {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+.job-categories .category:hover span {
+    background: rgba(0, 0, 0, 0.8); /* Menggelapkan background teks saat dihover */
+}
+
+
+
+/* Gaya untuk lowongan terbaru */
+.latest-jobs {
+    padding: 2rem;
+    margin: 2rem;
+    background-color: #f9f9f9; /* Abu-abu sangat muda */
+    border-radius: 8px;
+}
+
+.job-list {
+    display: flex; /* Menggunakan Flexbox untuk menampilkan item secara horizontal */
+    flex-wrap: wrap; /* Membungkus item jika tidak cukup ruang */
+    list-style-type: none; /* Menghilangkan bullet points */
+    padding: 0; /* Menghapus padding */
+}
+
+.job-list li {
+    flex: 1 1 200px; /* Mengatur item agar bisa tumbuh dan mengecil */
+    margin: 0.5rem; /* Memberi jarak antar item */
+    padding: 1rem;
+    border: 1px solid #ccc; /* Menambahkan border pada item */
+    border-radius: 5px; /* Memberikan sudut melengkung */
+    background-color: #fff; /* Warna latar belakang item */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+    transition: transform 0.2s, box-shadow 0.2s; /* Transisi untuk efek hover */
+}
+
+.job-list li:hover {
+    transform: translateY(-5px); /* Mengangkat item saat dihover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Mengubah bayangan saat dihover */
+}
+
+.job-list h3 {
+    margin: 0; /* Menghapus margin dari judul */
+    color: #1e90ff; /* Warna judul */
+}
+
+.job-list p {
+    margin: 0.5rem 0; /* Margin vertikal antar paragraf */
+}
+
+
+/* Gaya footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1e90ff; /* Biru */
+    color: #FFFFFF;
+}
