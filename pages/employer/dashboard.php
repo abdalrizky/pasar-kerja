@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <aside class="sidebar">
-            <h1 class="logo">Pasar Kerja</h1>
+            <h1 class="logo">Pasar<span>Kerja</span></h1>
             <nav>
                 <ul>
                     <li><a href="dashboard.php" class="sidebar-on"><i data-feather="bar-chart" class="icon"></i>Dasbor</a></li>
@@ -41,7 +41,7 @@
             <section id="job-list" class="job-list">
                 <div class="header-job-created-title">
                     <h2>Daftar Lowongan yang Dibuat</h2>
-                    <a href="#create-new-job">Buat Lowongan Baru</a>
+                    <a href="new-job.php">Buat Lowongan Baru</a>
                 </div>
                 <div class="job-cards">
                     <div class="job-card">
