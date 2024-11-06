@@ -1,0 +1,75 @@
+@import "../style.css";
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 2rem;
+}
+
+.job-apply-title {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.job-apply-subtitle {
+    color: rgb(130, 130, 130);
+}
+
+.job-receiver {
+    width: 100%;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.job-receiver img {
+    height: 100px;
+}
+
+.apply-forms {
+    margin-top: 16px;
+}
+
+form input, form label {
+    display: block;
+}
+
+form label {
+    margin-top: 16px;
+}
+
+form input {
+    height: 40px;
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+}
+
+form input, form button {
+    border-radius: 4px;
+}
+
+form button {
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 16px;
+    background-color: rgba(14, 83, 151, 0.8);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+}
+
+.birthday-detail-input {
+    display: flex;
+}
+
+.birthday-detail-input div {
+    width: 50%;
+}
+
+.birthday-detail-input div:first-of-type {
+    margin-right: 24px;
+}
+
+

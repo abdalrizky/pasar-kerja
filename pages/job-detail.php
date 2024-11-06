@@ -23,7 +23,7 @@
                 <i data-feather="tag"></i>
                 <p>Teknologi Informasi</p>
             </div>
-            <a href="../pages/job-seeker/apply.php?" class="button-apply">Lamar Pekerjaan Ini</a>
+            <a href="../pages/job-seeker/apply.php?id=" class="button-apply">Lamar Pekerjaan Ini</a>
             <a href="#" class="button-apply">
                 <span>
                     <i data-feather="bookmark"></i>
