@@ -10,32 +10,8 @@
 </head>
 
 <body>
-    <header>
-        <h1><span style="color: white;">Pasar</span><span style="color: orange; font-style: italic;">Kerja</span></h1>
-        <nav>
-            <ul>
-                <li><a href="index.php">Beranda</a></li>
-                <li><a href="tips_loker.php">Tips Loker</a></li>
-                <?php /*
-            <?php if ($role == 'job_seeker') : ?>
-                <li><a href="job_seeker_dashboard.php">Job Seeker Dashboard</a></li>
-                <?php elseif ($role == 'employee') : ?>
-                <li><a href="employee_dashboard.php">Employee Dashboard</a></li>
-                <?php elseif ($role == 'moderator') : ?>
-                <li><a href="moderator_dashboard.php">Moderator Dashboard</a></li>
-                <?php endif; ?>
-                <?php if (!$role) : ?>
-                <li><a href="login.php" class="bordered">Login</a></li>
-                <li><a href="register.php" class="bordered">Register</a></li>
-                <?php else : ?>
-                <li><a href="logout.php">Logout</a></li>
-                <?php endif; ?>
-                */
-                ?>
-                <li><a href="job_seeker_dashboard.php">Job Seeker Dashboard</a></li>
-            </ul>
-        </nav>
-    </header>
+
+    <?php include "../components/navbar.php" ?>
 
     <main>
         <section class="search-jobs">
@@ -110,36 +86,34 @@
                     <h3>Web Developer</h3>
                     <p>Ditawarkan oleh: ABC Corp</p>
                     <p>Lokasi: Jakarta</p>
-                    <a href='job_detail.php?id=1'>Detail</a>
+                    <a href='job-detail.php?id=1'>Detail</a>
                 </li>
                 <li>
                     <img src="../assets/img/logo-adaro.jpg" alt="">
                     <h3>Graphic Designer</h3>
                     <p>Perusahaan: XYZ Studio</p>
                     <p>Lokasi: Bandung</p>
-                    <a href='job_detail.php?id=2'>Detail</a>
+                    <a href='job-detail.php?id=2'>Detail</a>
                 </li>
                 <li>
                 <img src="../assets/img/logo-adaro.jpg" alt="">
                     <h3>Marketing Specialist</h3>
                     <p>Perusahaan: LMN Group</p>
                     <p>Lokasi: Surabaya</p>
-                    <a href='job_detail.php?id=3'>Detail</a>
+                    <a href='job-detail.php?id=3'>Detail</a>
                 </li>
                 <li>
                 <img src="../assets/img/logo-adaro.jpg" alt=""> 
                     <h3>Data Analyst</h3>
                     <p>Perusahaan: OPQ Inc.</p>
                     <p>Lokasi: Samarinda</p>
-                    <a href='job_detail.php?id=4'>Detail</a>
+                    <a href='job-detail.php?id=4'>Detail</a>
                 </li>
             </ul>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> Pasar Kerja. Hak cipta dilindungi.</p>
-    </footer>
+    <?php include "../components/footer.php" ?>
 
 </body>
 

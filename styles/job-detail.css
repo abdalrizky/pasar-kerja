@@ -1,0 +1,82 @@
+@import "style.css";
+
+body {
+    background-color: #FFFFFF;
+    color: #333;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 2rem;
+}
+
+.job-position {
+    font-size: 1.5rem;
+}
+
+.job-company {
+    color: rgb(130, 130, 130);
+}
+
+.job-location {
+    display: flex;
+    margin-top: 16px;
+}
+
+.job-location p {
+    margin-left: 8px;
+}
+
+.job-common-info img {
+    width: 100px;
+}
+
+.button-apply {
+    display: inline-block;
+    margin-top: 16px;
+    background-color: rgba(14, 83, 151, 0.8);
+    padding: 16px 24px;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-radius: 16px;
+}
+
+.button-apply span {
+    display: flex;
+    align-items: center;
+}
+
+.job-description {
+    margin-top: 24px;
+}
+
+.job-description-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.job-description-detail {
+    margin-top: 12px;
+    line-height: 2;
+}
+
+@media (max-width: 768px) {
+    main {
+        width: 100%;
+    }
+
+    .button-apply {
+        width: 100%;
+        text-align: center;
+    }
+
+    .button-apply span {
+        justify-content: center;
+    }
+
+    header nav {
+        display: none;
+    }
+}
