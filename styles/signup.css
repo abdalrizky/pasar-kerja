@@ -132,6 +132,15 @@ form button {
     margin-bottom: 16px;
 }
 
+.success-message-box {
+    border: 1px solid green;
+    color: rgb(0, 128, 0);
+    background-color: rgba(0, 128, 0, 0.3);
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
 form button:hover {
     background-color: #45a049;
 }

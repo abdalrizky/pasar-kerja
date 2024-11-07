@@ -1,3 +1,49 @@
+<?php
+
+require "../utils/database/helper.php";
+
+$name = null;
+$email = null;
+
+$errorState = [
+    "status" => false,
+    "message" => null
+];
+
+if (isset($_POST['signup'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $roleId = $_POST['signup-as'];
+    $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+
+    $checkEmail = fetch("SELECT email FROM credentials WHERE email='$email'");
+    if (count($checkEmail) === 0) {
+        $sql = execDML("INSERT INTO credentials VALUES (null, $roleId, '$email', '$passwordHashed')");
+        if ($sql > 0) {
+            $errorState = [
+                "status" => false,
+                "message" => "Pendaftaran berhasil. Silakan masuk."
+            ];
+            $name = null;
+            $email = null;
+        } else {
+            $errorState = [
+                "status" => true,
+                "message" => "Ada kesalahan pada sistem kami. Silakan ulangi."
+            ];
+        }
+    } else {
+        $errorState = [
+            "status" => true,
+            "message" => "Surel telah digunakan"
+        ];
+    }
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -22,27 +68,27 @@
                     <span id="signup-as-employer-button">Employer</span>
                 </div>
             </div>
-            <!-- Job Seeker Form -->
-            <form action="" method="post">
-                <input type="hidden" value="job-seeker" id="signup-as" name="signup-as">
-                <label for="job-seeker-name">Nama Lengkap</label>
-                <input type="text" name="job-seeker-name">
-                <label for="job-seeker-email">Surel</label>
-                <input type="email" name="job-seeker-email">
-                <label for="job-seeker-password">Kata Sandi</label>
-                <input type="password" name="job-seeker-password">
-                <label for="job-seeker-password-confirm">Konfirmasi Kata Sandi</label>
-                <input type="password" name="job-seeker-password-confirm">
-                <div class="error-message-box">
-                    <p class="error-message-text">Surel telah digunakan!</p>
-                </div>
-                <button type="submit">Daftar</button>
+            <form action="" method="post" id="signup-form">
+                <input type="hidden" value="1" id="signup-as" name="signup-as">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" name="name" value="<?= $name ?>" required>
+                <label for="email">Surel</label>
+                <input type="email" name="email" value="<?= $email ?>" required>
+                <label for="password">Kata Sandi</label>
+                <input type="password" name="password" id="password" required>
+                <label for="password-confirm">Konfirmasi Kata Sandi</label>
+                <input type="password" name="password-confirm" id="password-confirm" required>
+                <?php if (isset($_POST['signup']) && $errorState['status']): ?>
+                    <div class="error-message-box">
+                        <p class="error-message-text"><?= $errorState['message'] ?></p>
+                    </div>
+                <?php elseif (isset($_POST['signup']) && !$errorState['status']): ?>
+                    <div class="success-message-box">
+                        <p class="success-message-text"><?= $errorState['message'] ?></p>
+                    </div>
+                <?php endif; ?>
+                <button type="submit" name="signup">Daftar</button>
             </form>
-            <!-- Employer Form -->
-            <!-- <form action="" method="post" class="hidden">
-                <label for="employer-name">Nama Lengkap</label>
-                <input type="text" >
-            </form> -->
             <p class="already-have-account">Sudah punya akun? <a href="login.php">Masuk</a></p>
         </main>
     </div>
