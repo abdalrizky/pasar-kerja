@@ -1,3 +1,25 @@
+<?php
+
+require '../../utils/database/helper.php';
+
+if (!isset($_GET['id'])) {
+    echo "ID harus dilampirkan";
+    exit;
+}
+
+$jobId = $_GET['id'];
+
+$job = fetch("SELECT * FROM jobs JOIN job_categories ON jobs.category_id = job_categories.id WHERE jobs.id = $jobId");
+$jobCategories = fetch("SELECT * FROM job_categories");
+if (count($job) !== 0) {
+    $job = $job[0];
+} else {
+    echo "ID tidak ditemukan";
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,13 +57,18 @@
             <section>
                 <form action="" method="post">
                     <label for="job-position-wanted">Posisi Dicari</label>
-                    <input type="text" name="job-position-wanted" required>
+                    <input type="text" name="job-position-wanted" value="<?= $job['title'] ?>" required>
                     <label for="job-location">Lokasi Pekerjaan</label>
-                    <input type="text" name="job-location" required>
+                    <input type="text" name="job-location" value="<?= $job['location'] ?>" required>
                     <label for="job-category">Kategori Pekerjaan</label>
-                    <input type="text" name="job-category" required>
+                    <select>
+                        <option disabled>Pilih Kategori</option>
+                        <?php foreach ($jobCategories as $jobCategory): ?>
+                            <option value="<?= $jobCategory['name'] ?>"><?= $jobCategory['name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="job-description">Deskripsi Pekerjaan</label>
-                    <textarea name="job-description" required></textarea>
+                    <textarea name="job-description" required><?= $job['description'] ?></textarea>
                     <button type="submit">Buat Lowongan</button>
                 </form>
             </section>
