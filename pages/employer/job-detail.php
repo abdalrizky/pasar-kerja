@@ -4,13 +4,29 @@ require '../../utils/database/helper.php';
 
 $jobId = $_GET['id'];
 
-$job = fetch("SELECT * FROM job_applications WHERE job_id=$jobId");
-var_dump($job);
+$job = fetch("SELECT jobs.title, employers.name as 'employer_name', jobs.posted_at
+                FROM jobs
+                JOIN employers ON jobs.employer_id = employers.id
+                JOIN job_categories ON jobs.category_id = job_categories.id
+                WHERE jobs.id=$jobId");
+
+$jobApplications = fetch("SELECT job_seekers.name as 'employer_name', job_applications.submitted_at
+                            FROM job_applications
+                            JOIN job_seekers ON job_applications.job_seeker_id = job_seekers.id
+                            WHERE job_applications.job_id=$jobId");
+
+if (count($job) !== 0) {
+    $job = $job[0];
+} else {
+    echo "ID tidak ditemukan";
+    exit;
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +34,9 @@ var_dump($job);
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="../../styles/employer/job-detail.css">
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
         <aside class="sidebar">
             <h1 class="logo">Pasar<span>Kerja</span></h1>
             <nav>
@@ -32,7 +49,7 @@ var_dump($job);
         </aside>
         <main class="main-content">
             <header class="header">
-                <h1>Front End Developer</h1>
+                <h1><?= $job['title'] ?></h1>
                 <div class="user-actions">
                     <a href="../logout.php" class="user-action-logout">
                         <i data-feather="log-out" class="user-action-logout-logo"></i>
@@ -43,13 +60,13 @@ var_dump($job);
 
             <section class="job-posting-info">
                 <div class="action-button">
-                    <a href="edit-job.php">
+                    <a href="edit-job.php?id=<?= $jobId ?>">
                         <i data-feather="edit"></i>
                         Ubah Detail
                     </a>
                     <a href="#"><i data-feather="trash-2"></i>Hapus</a>
                 </div>
-                <p>Diposting oleh Si Pengembang pada 6 November 2024 18.07 WITA.</p>
+                <p>Diposting oleh <?= $job['employer_name'] ?> pada <?= $job['posted_at'] ?>.</p>
                 <p>Ditujukan kepada:</p>
                 <img src="../../assets/img/logo-adaro.jpg" alt="">
             </section>
@@ -57,24 +74,19 @@ var_dump($job);
             <section class="job-applications-submitted">
                 <h2>Daftar Lamaran yang Telah Masuk</h2>
                 <div class="application-list">
-                <div class="application">
-                    <h3>Muhammad Abdal Rizky</h3>
-                    <p>Dikirim pada 1 November 2024</p>
-                    <a href="application-detail.php?id=1" class="view-application">Lihat Detail</a>
-                </div>
-                <div class="application">
-                    <h3>Davina Putri Ananta</h3>
-                    <p>Dikirim pada 2 November 2024</p>
-                    <a href="application-detail.php?id=2" class="view-application">Lihat Detail</a>
-                </div>
-                <div class="application">
-                    <h3>Tua Delima Sitompul</h3>
-                    <p>Dikirim pada 3 November 2024</p>
-                    <a href="application-detail.php?id=2" class="view-application">Lihat Detail</a>
-                </div>
+                    <?php foreach ($jobApplications as $jobApplication): ?>
+                    <div class="application">
+                        <h3><?= $jobApplication['employer_name'] ?></h3>
+                        <p>Dikirim pada <?= $jobApplication['submitted_at'] ?></p>
+                        <a href="application-detail.php?id=1" class="view-application">Lihat Detail</a>
+                    </div>
+                    <?php endforeach; ?>
             </section>
         </main>
     </div>
-    <script>feather.replace();</script>
+    <script>
+    feather.replace();
+    </script>
 </body>
+
 </html>
