@@ -2,6 +2,8 @@
 
 require '../../utils/database/helper.php';
 
+$jobCategories = fetch("SELECT * FROM job_categories");
+
 if (isset($_POST['submit'])) {
     $jobTitle = htmlspecialchars(ucwords($_POST['job-position-wanted']));
     $jobLocation = $_POST['job-location'];
@@ -61,7 +63,12 @@ if (isset($_POST['submit'])) {
                     <label for="job-location">Lokasi Pekerjaan</label>
                     <input type="text" name="job-location" required>
                     <label for="job-category">Kategori Pekerjaan</label>
-                    <input type="text" name="job-category" required>
+                    <select name="job-category">
+                        <option disabled selected>Pilih Kategori</option>
+                        <?php foreach ($jobCategories as $jobCategory): ?>
+                            <option value="<?= $jobCategory['name'] ?>"><?= $jobCategory['name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="job-description">Deskripsi Pekerjaan</label>
                     <textarea name="job-description" required></textarea>
                     <button type="submit" name="submit">Buat Lowongan</button>
