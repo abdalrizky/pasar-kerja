@@ -6,9 +6,9 @@ $jobCategories = fetch("SELECT * FROM job_categories");
 
 if (isset($_POST['submit'])) {
     $jobTitle = htmlspecialchars(ucwords($_POST['job-position-wanted']));
-    $jobLocation = $_POST['job-location'];
+    $jobLocation = ucwords($_POST['job-location']);
     $jobCategory = $_POST['job-category'];
-    $jobDescription = htmlspecialchars($_POST['job-description']);
+    $jobDescription = htmlspecialchars(ucfirst($_POST['job-description']));
     $postedAt = time();
 
     $sql = execDML("INSERT INTO jobs VALUES (null, 1, 1, $postedAt, '$jobTitle', '$jobLocation', '$jobDescription', 'open')");

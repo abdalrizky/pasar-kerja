@@ -9,13 +9,34 @@ if (!isset($_GET['id'])) {
 
 $jobId = $_GET['id'];
 
-$job = fetch("SELECT * FROM jobs JOIN job_categories ON jobs.category_id = job_categories.id WHERE jobs.id = $jobId");
+$job = fetch("SELECT jobs.title, jobs.location, job_categories.id as 'category_id', job_categories.name as 'category_name' , jobs.description
+                FROM jobs
+                JOIN job_categories ON jobs.category_id = job_categories.id
+                WHERE jobs.id = $jobId");
 $jobCategories = fetch("SELECT * FROM job_categories");
+
 if (count($job) !== 0) {
     $job = $job[0];
 } else {
     echo "ID tidak ditemukan";
     exit;
+}
+
+if (isset($_POST["edit"])) {
+
+    $newTitle = htmlspecialchars(ucwords($_POST['job-position-wanted']));
+    $newLocation = ucwords($_POST['job-location']);
+    $newCategory = $_POST['job-category'];
+    $newDescription = htmlspecialchars(ucfirst($_POST['job-description']));
+
+    $sql = execDML("UPDATE jobs SET title='$newTitle', category_id=$newCategory, location='$newLocation', description='$newDescription', status='open' WHERE id=$jobId");
+
+    if ($sql > 0) {
+        echo "<script>alert('Perubahan berhasil dilakukan!'); document.location.href='dashboard.php'</script>";
+    } else {
+        echo "<script>alert('Perubahan gagal dilakukan!'); document.location.href='dashboard.php'</script>";
+    }
+    
 }
 
 ?>
@@ -61,15 +82,15 @@ if (count($job) !== 0) {
                     <label for="job-location">Lokasi Pekerjaan</label>
                     <input type="text" name="job-location" value="<?= $job['location'] ?>" required>
                     <label for="job-category">Kategori Pekerjaan</label>
-                    <select>
+                    <select name="job-category">
                         <option disabled>Pilih Kategori</option>
                         <?php foreach ($jobCategories as $jobCategory): ?>
-                            <option value="<?= $jobCategory['name'] ?>"><?= $jobCategory['name'] ?></option>
+                            <option value="<?= $jobCategory['id'] ?>" <?= ($jobCategory['id'] == $job['category_id']) ? "selected" : "" ?>><?= $jobCategory['name'] ?></option>
                         <?php endforeach; ?>
                     </select>
                     <label for="job-description">Deskripsi Pekerjaan</label>
                     <textarea name="job-description" required><?= $job['description'] ?></textarea>
-                    <button type="submit">Buat Lowongan</button>
+                    <button type="submit" name="edit">Simpan Perubahan</button>
                 </form>
             </section>
         </main>
