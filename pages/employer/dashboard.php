@@ -1,3 +1,11 @@
+<?php
+
+require '../../utils/database/helper.php';
+
+$jobs = fetch('SELECT * FROM jobs');
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -43,18 +51,19 @@
                     <h2>Daftar Lowongan yang Dibuat</h2>
                     <a href="new-job.php">Buat Lowongan Baru</a>
                 </div>
+                <?php if (count($jobs) !== 0): ?>
                 <div class="job-cards">
-                    <div class="job-card">
-                        <h3>Frontend Developer</h3>
-                        <p>Status: Masih Dibuka</p>
-                        <a href="#job-details-frontend">Lihat Detail</a>
+                    <?php foreach ($jobs as $job): ?>
+                        <div class="job-card">
+                        <h3><?= $job['title']; ?></h3>
+                        <p>Status: <?= $job['status'] === 'open' ? 'Terbuka' : 'Telah Ditutup'; ?></p>
+                        <a href='job-detail.php?id=<?= $job["id"] ?>'>Lihat Detail</a>
                     </div>
-                    <div class="job-card">
-                        <h3>Backend Developer</h3>
-                        <p>Status: Tutup</p>
-                        <a href="#job-details-backend">Lihat Detail</a>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
+                <?php else: ?>
+                    <h4>Belum ada Lowongan</h4>
+                <?php endif; ?>
             </section>
         </main>
     </div>

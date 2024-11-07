@@ -14,6 +14,11 @@
     margin-right: 8px;
 }
 
+.logo span {
+    color: orange;
+    font-style: italic;
+}
+
 .profile-photo {
     border-radius: 50%;
     width: 150px;
@@ -54,7 +59,7 @@
 .sidebar .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #5A67D8;
+    color: #000;
     margin-bottom: 3rem;
 }
 

@@ -1,5 +1,28 @@
+<?php
+
+require '../../utils/database/helper.php';
+
+if (isset($_POST['submit'])) {
+    $jobTitle = htmlspecialchars(ucwords($_POST['job-position-wanted']));
+    $jobLocation = $_POST['job-location'];
+    $jobCategory = $_POST['job-category'];
+    $jobDescription = htmlspecialchars($_POST['job-description']);
+    $postedAt = time();
+
+    $sql = execDML("INSERT INTO jobs VALUES (null, 1, 1, $postedAt, '$jobTitle', '$jobLocation', '$jobDescription', 'open')");
+
+    if ($sql > 0) {
+        echo "<script>alert('berhasil!'); document.location.href='dashboard.php'</script>";
+    } else {
+        echo "<script>alert('gagal!'); document.location.href='dashboard.php'</script>";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +30,9 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="../../styles/employer/new-job.css">
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
         <aside class="sidebar">
             <h1 class="logo">Pasar<span>Kerja</span></h1>
             <nav>
@@ -40,7 +64,7 @@
                     <input type="text" name="job-category" required>
                     <label for="job-description">Deskripsi Pekerjaan</label>
                     <textarea name="job-description" required></textarea>
-                    <button type="submit">Buat Lowongan</button>
+                    <button type="submit" name="submit">Buat Lowongan</button>
                 </form>
             </section>
         </main>
@@ -48,6 +72,6 @@
     <script>
     feather.replace();
     </script>
-    <script src="../../js/dashboard.js"></script>
 </body>
+
 </html>

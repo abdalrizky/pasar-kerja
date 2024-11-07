@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <aside class="sidebar">
-            <h1 class="logo">Pasar Kerja</h1>
+            <h1 class="logo">Pasar<span>Kerja</span></h1>
             <nav>
                 <ul>
                     <li><a href="dashboard.php"><i data-feather="bar-chart" class="icon"></i>Dasbor</a></li>

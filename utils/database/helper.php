@@ -9,7 +9,7 @@ function fetch($query) {
     $rows = [];
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $rows = $row;
+            $rows[] = $row;
         }
     }
     return $rows;

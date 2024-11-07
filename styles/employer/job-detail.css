@@ -10,6 +10,14 @@
     margin-right: 12px;
 }
 
+.job-listing {
+    border: 1px solid black;
+}
+
+.job-card:first-of-type {
+    margin-top: 16px;
+}
+
 .sidebar .logo {
     font-size: 28px;
 }
@@ -17,23 +25,6 @@
 .logo span {
     color: orange;
     font-style: italic;
-}
-
-.job-card {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 16px;
-}
-
-.job-card a {
-    text-decoration: none;
-    color: #0066CC;
-}
-
-.job-card:first-of-type {
-    margin-top: 16px;
 }
 
 /* Sidebar Styling */
@@ -80,56 +71,6 @@
     color: #5A67D8;
 }
 
-/* Main Content Styling */
-.main-content {
-    padding: 30px;
-    background-color: #f3f6fb;
-    overflow-y: auto;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.header h1 {
-    font-size: 2rem;
-}
-
-.user-action-logout {
-    display: inline-flex;
-}
-
-.user-action-logout-logo {
-    margin-right: 8px;
-}
-
-.profile-widget {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.profile-widget h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.profile-widget p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.profile-widget a {
-    font-weight: bold;
-    color: #5A67D8;
-    text-decoration: none;
-}
-
 .sidebar nav ul li {
     margin-bottom: 1.5rem;
     
@@ -156,12 +97,84 @@
     border-radius: 16px;
 }
 
-.header-job-created-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.main-content {
+    padding: 30px;
+    background-color: #f3f6fb;
+    overflow-y: auto;
 }
 
-.header-job-created-title a {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.user-action-logout {
+    display: inline-flex;
+}
+
+.user-action-logout-logo {
+    margin-right: 8px;
+}
+
+.job-posting-info img {
+    width: 100px;
+}
+
+.action-button {
+    text-align: right;
+}
+
+.action-button a {
+    display: inline-block;
+    background-color: rgba(14, 83, 151, 0.8);
+    margin-right: 12px;
+    padding: 12px;
+    color: #fff;
     text-decoration: none;
+    border-radius: 12px;
+}
+
+.job-applications-submitted h2 {
+    margin-top: 12px;
+}
+
+.application-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.application {
+    padding: 1rem;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+}
+
+.application:first-of-type {
+    margin-top: 16px;
+}
+
+.application h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.application p {
+    color: #888;
+    margin: 0.5rem 0;
+}
+
+.view-application {
+    text-decoration: none;
+    color: #0066CC;
+    font-weight: bold;
 }
