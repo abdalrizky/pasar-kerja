@@ -64,7 +64,7 @@ if (count($job) !== 0) {
                         <i data-feather="edit"></i>
                         Ubah Detail
                     </a>
-                    <a href="#"><i data-feather="trash-2"></i>Hapus</a>
+                    <a href="delete-job.php?id=<?= $jobId ?>" onclick="return confirm('Yakin ingin menghapus lowongan pekerjaan ini? Semua data yang berkaitan dengan lowongan pekerjaan akan terhapus dari database')"><i data-feather="trash-2"></i>Hapus</a>
                 </div>
                 <p>Diposting oleh <?= $job['employer_name'] ?> pada <?= $job['posted_at'] ?>.</p>
                 <p>Ditujukan kepada:</p>
