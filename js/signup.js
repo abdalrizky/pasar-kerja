@@ -1,5 +1,3 @@
-
-
 const signupAsJobSeekerButton = document.getElementById("signup-as-job-seeker-button")
 signupAsJobSeekerButton.addEventListener('click', () => {
     document.getElementById('signup-as').value = "1"
@@ -17,20 +15,11 @@ signupAsEmployerButton.addEventListener('click', () => {
 const passwordInput = document.getElementById('password');
 const passwordConfirmInput = document.getElementById('password-confirm');
 
-document.getElementById("signup-form").addEventListener('submit', (e) => {
-    
-    if (passwordInput.value !== passwordConfirmInput.value) {
-        e.preventDefault()
+passwordConfirmInput.addEventListener('input', () => {
+    if (passwordConfirmInput.value != passwordInput.value) {
         passwordConfirmInput.setCustomValidity("Konfirmasi kata sandi tidak sesuai")
+        passwordConfirmInput.reportValidity()
     } else {
         passwordConfirmInput.setCustomValidity("")
     }
 })
-
-passwordInput.addEventListener("input", function() {
-    confirmPasswordInput.setCustomValidity("");
-});
-
-passwordConfirmInput.addEventListener("input", function() {
-    passwordConfirmInput.setCustomValidity("");
-});
