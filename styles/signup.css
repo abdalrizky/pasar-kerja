@@ -13,7 +13,7 @@ body {
     display: flex;
     width: 70%;
     max-width: 1000px;
-    max-height: 730px;
+    max-height: 760px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -90,7 +90,7 @@ form label {
     color: #555;
 }
 
-form input {
+form input, form select {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -108,6 +108,10 @@ form button {
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.hidden {
+    display: none;
 }
 
 .already-have-account {

@@ -17,11 +17,14 @@ $errorState = [
     "message" => null
 ];
 
+$companies = fetch("SELECT * FROM companies");
+
 if (isset($_POST['signup'])) {
     $name = htmlspecialchars(ucwords($_POST['name']));
     $email = $_POST['email'];
     $password = $_POST['password'];
     $roleId = $_POST['signup-as'];
+    $companyId = $_POST['companies'];
     $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
     $checkEmail = fetch("SELECT email FROM credentials WHERE email='$email'");
@@ -33,7 +36,7 @@ if (isset($_POST['signup'])) {
             if ($roleId == 1) {
                 execDML("INSERT INTO job_seekers VALUES (null, $credentialRecentlyCreated, '$name', null, null, null, null, null, null)");
             } else if ($roleId == 2) {
-                execDML("INSERT INTO employers VALUES (null, $credentialRecentlyCreated, null, '$name', null, 'unverified')");
+                execDML("INSERT INTO employers VALUES (null, $credentialRecentlyCreated, $companyId, '$name', null, 'verified')");
             }
 
             $errorState = [
@@ -94,14 +97,20 @@ if (isset($_POST['signup'])) {
                 <input type="password" name="password" id="password" required>
                 <label for="password-confirm">Konfirmasi Kata Sandi</label>
                 <input type="password" name="password-confirm" id="password-confirm" required>
+                <label for="companies" id="companies-label" class="hidden">Perusahaan</label>
+                <select name="companies" id="companies" class="hidden" disabled>
+                    <?php foreach ($companies as $company): ?>
+                        <option value="<?= $company['id'] ?>"><?= $company['name'] ?></option>
+                    <?php endforeach; ?>
+                </select>
                 <?php if (isset($_POST['signup']) && $errorState['status']): ?>
-                <div class="error-message-box">
-                    <p class="error-message-text"><?= $errorState['message'] ?></p>
-                </div>
+                    <div class="error-message-box">
+                        <p class="error-message-text"><?= $errorState['message'] ?></p>
+                    </div>
                 <?php elseif (isset($_POST['signup']) && !$errorState['status']): ?>
-                <div class="success-message-box">
-                    <p class="success-message-text"><?= $errorState['message'] ?></p>
-                </div>
+                    <div class="success-message-box">
+                        <p class="success-message-text"><?= $errorState['message'] ?></p>
+                    </div>
                 <?php endif; ?>
                 <button type="submit" name="signup">Daftar</button>
             </form>

@@ -123,3 +123,7 @@ nav ul li a.button:hover {
 .job-list p {
     margin: 0.5rem 0;
 }
+
+.not-exist-jobs {
+    font-size: 24px;
+}

@@ -14,11 +14,13 @@ require '../../utils/database/helper.php';
 
 $jobId = $_GET['id'];
 
-$job = fetch("SELECT jobs.title, employers.name as 'employer_name', jobs.posted_at
+$job = fetch("SELECT jobs.title, employers.name as 'employer_name', jobs.posted_at, companies.name AS 'company_name', companies.logo
                 FROM jobs
                 JOIN employers ON jobs.employer_id = employers.id
+                JOIN companies ON employers.company_id = companies.id
                 JOIN job_categories ON jobs.category_id = job_categories.id
                 WHERE jobs.id=$jobId");
+                var_dump($job);
 
 $jobApplications = fetch("SELECT job_seekers.name as 'employer_name', job_applications.submitted_at
                             FROM job_applications
@@ -78,7 +80,8 @@ if (count($job) !== 0) {
                 </div>
                 <p>Diposting oleh <?= $job['employer_name'] ?> pada <?= $job['posted_at'] ?>.</p>
                 <p>Ditujukan kepada:</p>
-                <img src="../../assets/img/logo-adaro.jpg" alt="">
+                <p><?= $job['company_name'] ?></p>
+                <img src="../../assets/img/<?= $job['logo'] ?>" alt="">
             </section>
 
             <section class="job-applications-submitted">

@@ -6,8 +6,8 @@ session_start();
 
 $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, companies.name AS 'company_name', jobs.location
                 FROM jobs
-                JOIN companies ON jobs.company_id = companies.id
                 JOIN employers ON jobs.employer_id = employers.id
+                JOIN companies ON employers.company_id = companies.id
                 JOIN job_categories ON jobs.category_id = job_categories.id
                 LIMIT 4");
 
@@ -113,7 +113,7 @@ $jobCategories = fetch("SELECT * FROM job_categories");
                 <?php endforeach; ?>
             </ul>
             <?php else: ?>
-            <h4>Belum ada postingan lowongan pekerjaan</h4>
+            <p class="not-exist-jobs">Belum ada postingan lowongan pekerjaan.</p>
             <?php endif; ?>
         </section>
     </main>

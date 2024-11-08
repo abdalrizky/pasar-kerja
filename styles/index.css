@@ -300,6 +300,10 @@ max-width: 150px;
     border-radius: 16px;
 }
 
+.not-exist-jobs {
+    font-size: 24px;
+}
+
 @media (max-width: 768px) {
     main {
         margin-top: 200px;

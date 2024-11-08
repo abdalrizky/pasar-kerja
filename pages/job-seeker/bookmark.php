@@ -47,17 +47,21 @@ $bookmarks = fetch("SELECT jobs.id AS 'job_id', jobs.title, companies.logo, comp
         </section>
 
         <section class="saved-jobs">
-            <ul class="job-list">
-                <?php foreach ($bookmarks as $bookmark): ?>
-                <li>
-                    <img src="../../assets/img/<?= $bookmark['logo'] ?>" alt="">
-                    <h3><?= $bookmark['title'] ?></h3>
-                    <p>Ditawarkan oleh: <?= $bookmark["company_name"] ?></p>
-                    <p>Lokasi: <?= $bookmark["location"] ?></p>
-                    <a href='../job-detail.php?id=<?= $bookmark["job_id"] ?>'>Detail</a>
-                </li>
-                <?php endforeach; ?>
-            </ul>
+            <?php if(count($bookmarks) !== 0): ?>
+                <ul class="job-list">
+                    <?php foreach ($bookmarks as $bookmark): ?>
+                    <li>
+                        <img src="../../assets/img/<?= $bookmark['logo'] ?>" alt="">
+                        <h3><?= $bookmark['title'] ?></h3>
+                        <p>Ditawarkan oleh: <?= $bookmark["company_name"] ?></p>
+                        <p>Lokasi: <?= $bookmark["location"] ?></p>
+                        <a href='../job-detail.php?id=<?= $bookmark["job_id"] ?>'>Detail</a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p class="not-exist-jobs">Belum ada lowongan pekerjaan yang disimpan.</p>
+            <?php endif; ?>
         </section>
     </main>
 </body>
