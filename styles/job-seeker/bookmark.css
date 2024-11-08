@@ -127,3 +127,51 @@ nav ul li a.button:hover {
 .not-exist-jobs {
     font-size: 24px;
 }
+
+@media (max-width: 768px) {
+    main {
+        width: 100%;
+        margin-top: 200px;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .search-jobs-form form {
+        flex-direction: column;
+    }
+
+    .search-jobs input, .search-jobs button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .company-logos {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .job-categories .categories {
+        flex-direction: column;
+    }
+
+    .job-list li {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .job-list img {
+        max-width: 100px;
+    }
+
+    .search-jobs {
+        height: 400px;
+    }
+}

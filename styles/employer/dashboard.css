@@ -36,6 +36,17 @@
     margin-top: 16px;
 }
 
+.search-input {
+    width: 100%;
+    height: 50px;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.hide {
+    display: none;
+}
+
 /* Sidebar Styling */
 .sidebar {
     background-color: #ffffff;

@@ -139,3 +139,20 @@ textarea {
     border: none;
     resize: none;
 }
+
+@media (max-width: 768px) {
+    main {
+        margin-top: 200px;
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

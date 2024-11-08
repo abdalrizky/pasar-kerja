@@ -54,7 +54,6 @@ if (count($job) !== 0) {
             <nav>
                 <ul>
                     <li><a href="dashboard.php"><i data-feather="bar-chart" class="icon"></i>Dasbor</a></li>
-                    <li><a href="profile.php"><i data-feather="user" class="icon"></i>Profil</a></li>
                     <li><a href="setting.php"><i data-feather="settings" class="icon"></i>Pengaturan Akun</a></li>
                 </ul>
             </nav>

@@ -33,8 +33,8 @@ $jobs = fetch('SELECT * FROM jobs');
             <h1 class="logo">Pasar<span>Kerja</span></h1>
             <nav>
                 <ul>
-                    <li><a href="dashboard.php" class="sidebar-on"><i data-feather="bar-chart" class="icon"></i>Dasbor</a></li>
-                    <li><a href="profile.php"><i data-feather="user" class="icon"></i>Profil</a></li>
+                    <li><a href="dashboard.php" class="sidebar-on"><i data-feather="bar-chart"
+                                class="icon"></i>Dasbor</a></li>
                     <li><a href="setting.php"><i data-feather="settings" class="icon"></i>Pengaturan Akun</a></li>
                 </ul>
             </nav>
@@ -61,10 +61,12 @@ $jobs = fetch('SELECT * FROM jobs');
                     <h2>Daftar Lowongan yang Dibuat</h2>
                     <a href="new-job.php">Buat Lowongan Baru</a>
                 </div>
+
                 <?php if (count($jobs) !== 0): ?>
+                <input type="search" class="search-input" id="search-input" placeholder="Cari...">
                 <div class="job-cards">
                     <?php foreach ($jobs as $job): ?>
-                        <div class="job-card">
+                    <div class="job-card">
                         <h3><?= $job['title']; ?></h3>
                         <p>Status: <?= $job['status'] === 'open' ? 'Terbuka' : 'Telah Ditutup'; ?></p>
                         <a href='job-detail.php?id=<?= $job["id"] ?>'>Lihat Detail</a>
@@ -72,7 +74,7 @@ $jobs = fetch('SELECT * FROM jobs');
                     <?php endforeach; ?>
                 </div>
                 <?php else: ?>
-                    <h4>Belum ada Lowongan</h4>
+                <h4>Belum ada Lowongan</h4>
                 <?php endif; ?>
             </section>
         </main>
@@ -80,7 +82,21 @@ $jobs = fetch('SELECT * FROM jobs');
     <script>
     feather.replace();
     </script>
-    <script src="../../js/dashboard.js"></script>
+    <script>
+        const searchInput = document.getElementById('search-input')
+        const items = document.querySelectorAll('.job-card')
+        const searchNotFoundMessage = document.getElementById('search-not-found-message');
+        
+        searchInput.addEventListener('input', (el) => {
+            items.forEach((item) => {
+                if (item.innerText.toLowerCase().includes(el.target.value.toLowerCase())) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

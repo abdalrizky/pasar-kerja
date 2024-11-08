@@ -53,7 +53,6 @@ if (isset($_POST['change-password'])) {
             <nav>
                 <ul>
                     <li><a href="dashboard.php"><i data-feather="bar-chart" class="icon"></i>Dasbor</a></li>
-                    <li><a href="profile.php"><i data-feather="user" class="icon"></i>Profil</a></li>
                     <li><a href="setting.php" class="sidebar-on"><i data-feather="settings" class="icon"></i>Pengaturan
                             Akun</a></li>
                 </ul>
@@ -71,11 +70,6 @@ if (isset($_POST['change-password'])) {
             </header>
 
             <div class="employer-settings">
-                <div class="employer-profile">
-                    <img src="https://placehold.co/100x100" alt="">
-                    <label for="myfile">Pilih gambar baru:</label>
-                    <input type="file">
-                </div>
                 <div class="change-password-form">
                     <h2>Ubah Kata Sandi</h2>
                     <form action="" method="post">

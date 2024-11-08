@@ -134,6 +134,7 @@ label, input {
 .change-password-form-input {
     padding: 8px;
     width: 40%;
+    border-radius: 4px;
 }
 
 
@@ -252,4 +253,14 @@ label, input {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+form button {
+    width: 40%;
+    height: 42px;
+    margin-top: 16px;
+    background-color: rgba(14, 83, 151, 0.8);
+    color: white;
+    border-radius: 4px;
+    border: none;
 }
