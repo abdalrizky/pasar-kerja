@@ -2,16 +2,19 @@
 
 require '../../utils/database/helper.php';
 
+session_start();
+
 $jobCategories = fetch("SELECT * FROM job_categories");
 
 if (isset($_POST['submit'])) {
+    $employerId = $_SESSION['user']['id'];
     $jobTitle = htmlspecialchars(ucwords($_POST['job-position-wanted']));
     $jobLocation = ucwords($_POST['job-location']);
     $jobCategory = $_POST['job-category'];
     $jobDescription = htmlspecialchars(ucfirst($_POST['job-description']));
     $postedAt = time();
 
-    $sql = execDML("INSERT INTO jobs VALUES (null, 1, 1, $postedAt, '$jobTitle', '$jobLocation', '$jobDescription', 'open')");
+    $sql = execDML("INSERT INTO jobs VALUES (null, $employerId, $jobCategory, $postedAt, '$jobTitle', '$jobLocation', '$jobDescription', 'open')");
 
     if ($sql > 0) {
         echo "<script>alert('berhasil!'); document.location.href='dashboard.php'</script>";
@@ -66,7 +69,7 @@ if (isset($_POST['submit'])) {
                     <select name="job-category">
                         <option disabled selected>Pilih Kategori</option>
                         <?php foreach ($jobCategories as $jobCategory): ?>
-                            <option value="<?= $jobCategory['name'] ?>"><?= $jobCategory['name'] ?></option>
+                            <option value="<?= $jobCategory['id'] ?>"><?= $jobCategory['name'] ?></option>
                         <?php endforeach; ?>
                     </select>
                     <label for="job-description">Deskripsi Pekerjaan</label>

@@ -1,6 +1,15 @@
 <?php
 
+require '../utils/database/helper.php';
+
 session_start();
+
+$jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, companies.name AS 'company_name', jobs.location
+                FROM jobs
+                JOIN companies ON jobs.company_id = companies.id
+                JOIN employers ON jobs.employer_id = employers.id
+                JOIN job_categories ON jobs.category_id = job_categories.id
+                LIMIT 4");
 
 ?>
 
@@ -86,34 +95,15 @@ session_start();
         <section class="latest-jobs">
             <h2>Lowongan Terbaru</h2>
             <ul class="job-list">
-                <li>
-                    <img src="../assets/img/logo-adaro.jpg" alt="">
-                    <h3>Web Developer</h3>
-                    <p>Ditawarkan oleh: ABC Corp</p>
-                    <p>Lokasi: Jakarta</p>
-                    <a href='job-detail.php?id=1'>Detail</a>
-                </li>
-                <li>
-                    <img src="../assets/img/logo-adaro.jpg" alt="">
-                    <h3>Graphic Designer</h3>
-                    <p>Perusahaan: XYZ Studio</p>
-                    <p>Lokasi: Bandung</p>
-                    <a href='job-detail.php?id=2'>Detail</a>
-                </li>
-                <li>
-                <img src="../assets/img/logo-adaro.jpg" alt="">
-                    <h3>Marketing Specialist</h3>
-                    <p>Perusahaan: LMN Group</p>
-                    <p>Lokasi: Surabaya</p>
-                    <a href='job-detail.php?id=3'>Detail</a>
-                </li>
-                <li>
-                <img src="../assets/img/logo-adaro.jpg" alt=""> 
-                    <h3>Data Analyst</h3>
-                    <p>Perusahaan: OPQ Inc.</p>
-                    <p>Lokasi: Samarinda</p>
-                    <a href='job-detail.php?id=4'>Detail</a>
-                </li>
+                <?php foreach ($jobs as $job): ?>
+                    <li>
+                        <img src="../assets/img/logo-adaro.jpg" alt="">
+                        <h3><?= $job['title'] ?></h3>
+                        <p>Ditawarkan oleh: <?= $job["company_name"] ?></p>
+                        <p>Lokasi: <?= $job["location"] ?></p>
+                        <a href='job-detail.php?id=<?= $job["id"] ?>'>Detail</a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </section>
     </main>

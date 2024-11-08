@@ -21,12 +21,12 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $credentials['password'])) {
             $user = null;
             if ($credentials['role_id'] == 1) {
-                $user = fetch("SELECT job_seekers.name, credentials.email, credentials.role_id
+                $user = fetch("SELECT job_seekers.id, job_seekers.name, credentials.email, credentials.role_id
                                 FROM job_seekers
                                 JOIN credentials ON job_seekers.credential_id = credentials.id
                                 WHERE credentials.email = '$email'")[0];
             } elseif ($credentials['role_id'] == 2) {
-                $user = fetch("SELECT employers.name, credentials.email, credentials.role_id
+                $user = fetch("SELECT employers.id, employers.name, credentials.email, credentials.role_id
                                 FROM employers
                                 JOIN credentials ON employers.credential_id = credentials.id
                                 WHERE credentials.email = '$email'")[0];

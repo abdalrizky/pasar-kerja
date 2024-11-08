@@ -2,6 +2,8 @@
 
 require '../../utils/database/helper.php';
 
+session_start();
+
 $jobs = fetch('SELECT * FROM jobs');
 
 ?>
@@ -41,7 +43,7 @@ $jobs = fetch('SELECT * FROM jobs');
             </header>
 
             <section class="profile-widget">
-                <h2>Hai, Muhammad Abdal Rizky</h2>
+                <h2>Hai, <?= $_SESSION['user']['name'] ?></h2>
                 <p>Hari yang cerah, selamat bekerja!</p>
                 <a href="#job-list">Beberapa pekerjaan sedang menunggu ditinjau!</a>
             </section>
