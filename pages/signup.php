@@ -11,7 +11,7 @@ $errorState = [
 ];
 
 if (isset($_POST['signup'])) {
-    $name = $_POST['name'];
+    $name = htmlspecialchars(ucwords($_POST['name']));
     $email = $_POST['email'];
     $password = $_POST['password'];
     $roleId = $_POST['signup-as'];
@@ -19,12 +19,21 @@ if (isset($_POST['signup'])) {
 
     $checkEmail = fetch("SELECT email FROM credentials WHERE email='$email'");
     if (count($checkEmail) === 0) {
-        $sql = execDML("INSERT INTO credentials VALUES (null, $roleId, '$email', '$passwordHashed')");
-        if ($sql > 0) {
+        $insertIntoCredentials = execDML("INSERT INTO credentials VALUES (null, $roleId, '$email', '$passwordHashed')");
+        if ($insertIntoCredentials > 0) {
+            $credentialRecentlyCreated = fetch("SELECT * FROM credentials WHERE email='$email'")[0]['id'];
+
+            if ($roleId == 1) {
+                execDML("INSERT INTO job_seekers VALUES (null, $credentialRecentlyCreated, '$name', null, null, null, null, null, null)");
+            } else if ($roleId == 2) {
+                execDML("INSERT INTO employers VALUES (null, $credentialRecentlyCreated, 1, '$name', 'verified')");
+            }
+
             $errorState = [
                 "status" => false,
                 "message" => "Pendaftaran berhasil. Silakan masuk."
             ];
+
             $name = null;
             $email = null;
         } else {
