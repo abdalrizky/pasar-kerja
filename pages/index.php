@@ -11,6 +11,8 @@ $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, com
                 JOIN job_categories ON jobs.category_id = job_categories.id
                 LIMIT 4");
 
+$jobCategories = fetch("SELECT * FROM job_categories");
+
 ?>
 
 <!DOCTYPE html>
@@ -24,16 +26,21 @@ $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, com
 </head>
 
 <body>
-
     <header>
         <a href="../pages/index.php">
-            <h1><span style="color: white;">Pasar</span><span style="color: orange; font-style: italic;">Kerja</span></h1>
+            <h1><span style="color: white;">Pasar</span><span style="color: orange; font-style: italic;">Kerja</span>
+            </h1>
         </a>
         <nav>
             <ul>
-                <li><a href="index.php">Beranda</a></li>
+                <?php if (isset($_SESSION['login'])): ?>
                 <li><a href="job-seeker/bookmark.php">Bookmark</a></li>
-                <li><a href="job_seeker_dashboard.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
+                <li><a href="job-seeker/application-history.php">Riwayat Lamaran</a></li>
+                <li><a href="logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
+                <?php else: ?>
+                <li><a href="signup.php" class="button-outlined">Daftar</a></li>
+                <li><a href="login.php">Masuk</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -41,28 +48,14 @@ $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, com
     <main>
         <section class="search-jobs">
             <div class="search-jobs-element">
-                <h2>Cari Lowongan Pekerjaan</h2>
+                <h2>Pasar<span style="color: orange; font-style: italic;">Kerja</span> - Temukan Pekerjaan Anda</h2>
                 <div class="search-jobs-form">
                     <form action="search_results.php" method="GET">
-                        <input type="text" name="query" placeholder="Cari berdasarkan posisi atau perusahaan" required>
-                        <select name="location">
-                            <option value="">Pilih Lokasi</option>
-                            <option value="jakarta">Jakarta</option>
-                            <option value="bandung">Bandung</option>
-                            <option value="surabaya">Surabaya</option>
-                            <option value="samarinda">Samarinda</option>
-                        </select>
-                        <select name="category">
-                            <option value="">Pilih Kategori</option>
-                            <option value="it">IT & Software</option>
-                            <option value="design">Desain</option>
-                            <option value="marketing">Marketing</option>
-                        </select>
+                        <input type="text" name="query" placeholder="Cari..." required>
                         <button type="submit">Cari</button>
                     </form>
                 </div>
             </div>
-            
         </section>
 
         <section class="trusted-logos">
@@ -72,13 +65,22 @@ $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, com
                     <img src="../assets/img/kominfo-logo.jpg" alt="PT Kominfo">
                 </div>
                 <div class="company-logo-img">
-                <img src="../assets/img/microsoft-logo.jpg" alt="Microsoft">
+                    <img src="../assets/img/microsoft-logo.jpg" alt="Microsoft">
                 </div>
                 <div class="company-logo-img">
-                <img src="../assets/img/aws-logo.jpg" alt="aws">
+                    <img src="../assets/img/aws-logo.jpg" alt="aws">
                 </div>
                 <div class="company-logo-img">
-                <img src="../assets/img/google-logo.jpg" alt="Google">
+                    <img src="../assets/img/google-logo.jpg" alt="Google">
+                </div>
+                <div class="company-logo-img">
+                    <img src="../assets/img/gojek-logo.png" alt="Google">
+                </div>
+                <div class="company-logo-img">
+                    <img src="../assets/img/adaro-logo.jpg" alt="Google">
+                </div>
+                <div class="company-logo-img">
+                    <img src="../assets/img/kimia-farma-logo.png" alt="Google">
                 </div>
             </div>
         </section>
@@ -87,35 +89,32 @@ $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, com
         <section class="job-categories">
             <h2>Kategori Pekerjaan</h2>
             <div class="categories">
+                <?php foreach ($jobCategories as $jobCategory): ?>
                 <div class="category">
-                    <span>IT & Software</span>
-                    <img src="../assets/img/it.jpg" alt="IT & Software" class="popup-image">
+                    <span><?=$jobCategory['name']?></span>
                 </div>
-                <div class="category">
-                    <span>Desain</span>
-                    <img src="../assets/img/design.jpg" alt="Desain" class="popup-image">
-                </div>
-                <div class="category">
-                    <span>Marketing</span>
-                    <img src="../assets/img/marketing.jpg" alt="Marketing" class="popup-image">
-                </div>
+                <?php endforeach; ?>
             </div>
         </section>
 
 
         <section class="latest-jobs">
             <h2>Lowongan Terbaru</h2>
+            <?php if (count($jobs) !== 0): ?>
             <ul class="job-list">
                 <?php foreach ($jobs as $job): ?>
-                    <li>
-                        <img src="../assets/img/logo-adaro.jpg" alt="">
-                        <h3><?= $job['title'] ?></h3>
-                        <p>Ditawarkan oleh: <?= $job["company_name"] ?></p>
-                        <p>Lokasi: <?= $job["location"] ?></p>
-                        <a href='job-detail.php?id=<?= $job["id"] ?>'>Detail</a>
-                    </li>
+                <li>
+                    <img src="../assets/img/logo-adaro.jpg" alt="">
+                    <h3><?= $job['title'] ?></h3>
+                    <p>Ditawarkan oleh: <?= $job["company_name"] ?></p>
+                    <p>Lokasi: <?= $job["location"] ?></p>
+                    <a href='job-detail.php?id=<?= $job["id"] ?>'>Detail</a>
+                </li>
                 <?php endforeach; ?>
             </ul>
+            <?php else: ?>
+            <h4>Belum ada postingan lowongan pekerjaan</h4>
+            <?php endif; ?>
         </section>
     </main>
 

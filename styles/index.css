@@ -49,7 +49,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 3rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
@@ -80,8 +80,6 @@ nav ul li a.button:hover {
     display: inline-block;
     margin-left: 0 auto;
 }
-
-/* Gaya untuk bagian pencarian lowongan */
 .search-jobs {
     height: 250px;
     background-color: rgba(14, 83, 151, 0.8);
@@ -109,7 +107,7 @@ nav ul li a.button:hover {
 .search-jobs button {
     width: 150px;
     height: 42px;
-    background-color: #4caf50;
+    background-color: rgba(14, 83, 151, 0.8);
     color: #fff;
     border: none;
     border-radius: 16px;
@@ -120,8 +118,9 @@ nav ul li a.button:hover {
 
 /* Gaya untuk bagian pencarian lowongan */
 .search-jobs {
-    padding: 2rem;
-    background-image: url('kerja1.jpg'); /* Ganti dengan nama file gambar kamu */
+    filter: brightness(90%);
+    padding: 3.5rem;
+    background-image: url('../assets/img/kerja1.jpg'); /* Ganti dengan nama file gambar kamu */
     background-size: cover; /* Menyesuaikan ukuran gambar */
     background-position: center; /* Memposisikan gambar di tengah */
     margin: 2rem;
@@ -160,7 +159,6 @@ nav ul li a.button:hover {
 }
 
 .trusted-logos img {
-    width: 50px; /* Ukuran lebar gambar logo yang lebih kecil */
     height: auto; /* Memastikan proporsi gambar tetap terjaga */
     border: 1px solid #ddd; /* Border untuk memisahkan logo */
     border-radius: 5px; /* Sudut melengkung */
@@ -182,8 +180,8 @@ nav ul li a.button:hover {
 }
 
 .company-logos .company-logo-img {
-    width: 150px;
     height: 150px;
+    text-align: center;
 }
 
 .company-logos img {
@@ -200,7 +198,6 @@ nav ul li a.button:hover {
 .job-categories .categories {
     display: flex;
     gap: 1rem;
-    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -295,4 +292,57 @@ max-width: 150px;
 
 .job-list p {
     margin: 0.5rem 0;
+}
+
+.button-outlined {
+    border: 1px solid #fff;
+    padding: 12px 16px;
+    border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+    main {
+        margin-top: 200px;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .search-jobs-form form {
+        flex-direction: column;
+    }
+
+    .search-jobs input, .search-jobs button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .company-logos {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .job-categories .categories {
+        flex-direction: column;
+    }
+
+    .job-list li {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .job-list img {
+        max-width: 100px;
+    }
+
+    .search-jobs {
+        height: 400px;
+    }
 }
