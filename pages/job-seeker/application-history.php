@@ -1,6 +1,7 @@
 <?php
 
 require '../../utils/database/helper.php';
+require '../../utils/date.php';
 
 session_start();
 
@@ -59,7 +60,7 @@ $jobApplications = fetch("SELECT job_applications.submitted_at, jobs.title, jobs
                         <h3><?= $jobApplication['title'] ?></h3>
                         <p>Ditawarkan oleh: <?= $jobApplication["company_name"] ?></p>
                         <p>Lokasi: <?= $jobApplication["location"] ?></p>
-                        <p>Dikirim pada <?= $jobApplication['submitted_at'] ?></p>
+                        <p>Dikirim pada <?= convert($jobApplication['submitted_at']) ?></p>
                     </li>
                     <?php endforeach; ?>
                 </ul>

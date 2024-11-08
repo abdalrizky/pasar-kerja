@@ -11,6 +11,7 @@ if (isset($_SESSION['login'])) {
 }
 
 require '../../utils/database/helper.php';
+require '../../utils/date.php';
 
 $jobId = $_GET['id'];
 
@@ -25,6 +26,7 @@ $jobApplications = fetch("SELECT job_seekers.name as 'employer_name', job_applic
                             FROM job_applications
                             JOIN job_seekers ON job_applications.job_seeker_id = job_seekers.id
                             WHERE job_applications.job_id=$jobId");
+                        var_dump($jobApplications);
 
 if (count($job) !== 0) {
     $job = $job[0];
@@ -77,7 +79,7 @@ if (count($job) !== 0) {
                     </a>
                     <a href="delete-job.php?id=<?= $jobId ?>" onclick="return confirm('Yakin ingin menghapus lowongan pekerjaan ini? Semua data yang berkaitan dengan lowongan pekerjaan akan terhapus dari database')"><i data-feather="trash-2"></i>Hapus</a>
                 </div>
-                <p>Diposting oleh <?= $job['employer_name'] ?> pada <?= $job['posted_at'] ?>.</p>
+                <p>Diposting oleh <?= $job['employer_name'] ?> pada <?= convert($job['posted_at']) ?>.</p>
                 <p>Ditujukan kepada:</p>
                 <p><?= $job['company_name'] ?></p>
                 <img src="../../assets/img/<?= $job['logo'] ?>" alt="">
@@ -90,8 +92,8 @@ if (count($job) !== 0) {
                         <?php foreach ($jobApplications as $jobApplication): ?>
                         <div class="application">
                             <h3><?= $jobApplication['employer_name'] ?></h3>
-                            <p>Dikirim pada <?= $jobApplication['submitted_at'] ?></p>
-                            <a href="application-detail.php?id=1" class="view-application">Lihat Detail</a>
+                            <p>Dikirim pada <?= convert($jobApplication['submitted_at']) ?></p>
+                            <a href="#" class="view-application">Lihat Detail</a>
                         </div>
                         <?php endforeach; ?>
                     </div>
