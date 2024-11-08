@@ -15,12 +15,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `pasar_kerja`
 --
-CREATE DATABASE IF NOT EXISTS `pasar_kerja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `pasar_kerja` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `pasar_kerja`;
 
 -- --------------------------------------------------------
@@ -34,7 +34,7 @@ CREATE TABLE `bookmarks` (
   `id` int NOT NULL,
   `job_seeker_id` int NOT NULL,
   `job_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE `companies` (
   `id` int NOT NULL,
   `name` varchar(100) NOT NULL,
   `logo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `companies`
@@ -73,7 +73,7 @@ CREATE TABLE `credentials` (
   `role_id` int NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -87,9 +87,9 @@ CREATE TABLE `employers` (
   `credential_id` int NOT NULL,
   `company_id` int DEFAULT NULL,
   `name` varchar(100) NOT NULL,
-  `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `photo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `status` enum('verified','unverified') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,7 @@ CREATE TABLE `jobs` (
   `location` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `status` enum('open','close') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -121,7 +121,7 @@ CREATE TABLE `job_applications` (
   `job_id` int NOT NULL,
   `job_seeker_id` int NOT NULL,
   `submitted_at` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ DROP TABLE IF EXISTS `job_categories`;
 CREATE TABLE `job_categories` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `job_categories`
@@ -163,7 +163,7 @@ CREATE TABLE `job_seekers` (
   `passion` varchar(100) DEFAULT NULL,
   `biography` varchar(100) DEFAULT NULL,
   `photo` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -175,7 +175,7 @@ DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `roles`
