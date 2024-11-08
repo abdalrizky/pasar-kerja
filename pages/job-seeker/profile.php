@@ -21,7 +21,25 @@ $jobSeeker = fetch("SELECT * FROM job_seekers WHERE id=$jobSeekerId")[0];
 </head>
 
 <body>
-    <?php include "../../components/navbar.php" ?>
+    <header>
+        <a href="../index.php">
+            <h1><span style="color: white;">Pasar</span><span style="color: orange; font-style: italic;">Kerja</span>
+            </h1>
+        </a>
+        <nav>
+            <ul>
+                <?php if (isset($_SESSION['login'])): ?>
+                <li><a href="bookmark.php">Bookmark</a></li>
+                <li><a href="application-history.php">Riwayat Lamaran</a></li>
+                <li><a href="profile.php">Riwayat Lamaran</a></li>
+                <li><a href="logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
+                <?php else: ?>
+                <li><a href="signup.php" class="button-outlined">Daftar</a></li>
+                <li><a href="login.php">Masuk</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    </header>
     <main>
         <section class="head-text">
             <h1>Profil</h1>
@@ -33,7 +51,7 @@ $jobSeeker = fetch("SELECT * FROM job_seekers WHERE id=$jobSeekerId")[0];
                 <img src="../../assets/img/pp.jpg" alt="">
                 <p>Anda belum memiliki foto. Untuk dapat melamar pekerjaan, Anda harus melampirkan foto terbaru.</p>
             </div>
-            
+
             <label for="job-seeker-name">Nama Lengkap</label>
             <input type="text" name="job-seeker-name"
                 value="<?= ($jobSeeker['name'] !== null) ? $jobSeeker['name'] : 'Belum Diisi' ?>" disabled>

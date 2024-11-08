@@ -44,6 +44,7 @@ $jobCategories = fetch("SELECT * FROM job_categories");
                 <?php if (isset($_SESSION['login'])): ?>
                 <li><a href="job-seeker/bookmark.php">Bookmark</a></li>
                 <li><a href="job-seeker/application-history.php">Riwayat Lamaran</a></li>
+                <li><a href="job-seeker/profile.php">Profil</a></li>
                 <li><a href="logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
                 <?php else: ?>
                 <li><a href="signup.php" class="button-outlined">Daftar</a></li>
@@ -112,7 +113,7 @@ $jobCategories = fetch("SELECT * FROM job_categories");
             <ul class="job-list">
                 <?php foreach ($jobs as $job): ?>
                 <li>
-                    <img src="../assets/img/logo-adaro.jpg" alt="">
+                    <img src="../assets/img/<?= $job["company_logo"] ?>" alt="">
                     <h3><?= $job['title'] ?></h3>
                     <p>Ditawarkan oleh: <?= $job["company_name"] ?></p>
                     <p>Lokasi: <?= $job["location"] ?></p>

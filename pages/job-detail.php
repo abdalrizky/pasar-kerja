@@ -6,9 +6,10 @@ session_start();
 
 $jobId = $_GET['id'];
 
-$job = fetch("SELECT jobs.id, jobs.title, jobs.description, companies.logo, companies.name AS 'company_name', jobs.location, job_categories.name AS 'category'
+$job = fetch("SELECT jobs.id, jobs.title, jobs.description, companies.logo as 'company_logo', companies.name AS 'company_name', jobs.location, job_categories.name AS 'category'
                 FROM jobs
-                JOIN companies ON jobs.company_id = companies.id
+                JOIN employers ON jobs.employer_id = employers.id
+                JOIN companies ON employers.company_id = companies.id
                 JOIN job_categories ON jobs.category_id = job_categories.id
                 WHERE jobs.id=$jobId");
 $bookmark = fetch("SELECT * FROM bookmarks
@@ -27,6 +28,7 @@ if (count($job) !== 0) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,12 +36,30 @@ if (count($job) !== 0) {
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="../styles/job-detail.css">
 </head>
+
 <body>
-    <?php include "../components/navbar.php" ?>
+    <header>
+        <a href="../pages/index.php">
+            <h1><span style="color: white;">Pasar</span><span style="color: orange; font-style: italic;">Kerja</span>
+            </h1>
+        </a>
+        <nav>
+            <ul>
+                <?php if (isset($_SESSION['login'])): ?>
+                <li><a href="job-seeker/bookmark.php">Bookmark</a></li>
+                <li><a href="job-seeker/application-history.php">Riwayat Lamaran</a></li>
+                <li><a href="logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
+                <?php else: ?>
+                <li><a href="signup.php" class="button-outlined">Daftar</a></li>
+                <li><a href="login.php">Masuk</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <section class="job-common-info">
-            <img src="../assets/img/logo-adaro.jpg" alt="">
+            <img src="../assets/img/<?= $job['company_logo'] ?>" alt="">
             <p class="job-position"><?= $job['title'] ?></p>
             <p class="job-company"><?= $job['company_name'] ?></p>
             <div class="job-location">
@@ -50,16 +70,16 @@ if (count($job) !== 0) {
                 <i data-feather="tag"></i>
                 <p><?= $job['category'] ?></p>
             </div>
-            <a href="../pages/job-seeker/apply.php?id=" class="button-apply">Lamar Pekerjaan Ini</a>
+            <a href="../pages/job-seeker/apply.php?id=<?= $jobId ?>" class="button-apply">Lamar Pekerjaan Ini</a>
             <?php if (count($bookmark) === 0): ?>
-                <a href="job-seeker/add-to-bookmark.php?id=<?= $jobId ?>" class="button-apply">
-                    <span>
-                        <i data-feather="bookmark"></i>
-                        <span>Simpan di Bookmark</span>
-                    </span>
-                </a>
+            <a href="job-seeker/add-to-bookmark.php?id=<?= $jobId ?>" class="button-apply">
+                <span>
+                    <i data-feather="bookmark"></i>
+                    <span>Simpan di Bookmark</span>
+                </span>
+            </a>
             <?php else: ?>
-                <a href="job-seeker/delete-from-bookmark.php?id=<?= $jobId ?>" class="button-apply">
+            <a href="job-seeker/delete-from-bookmark.php?id=<?= $jobId ?>" class="button-apply">
                 <span>
                     <i data-feather="bookmark"></i>
                     <span>Hapus dari Bookmark</span>
@@ -76,7 +96,8 @@ if (count($job) !== 0) {
     </main>
     <?php include "../components/footer.php" ?>
     <script>
-      feather.replace();
+    feather.replace();
     </script>
 </body>
+
 </html>

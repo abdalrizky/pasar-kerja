@@ -33,6 +33,7 @@ $bookmarks = fetch("SELECT jobs.id AS 'job_id', jobs.title, companies.logo, comp
                 <?php if (isset($_SESSION['login'])): ?>
                 <li><a href="bookmark.php">Bookmark</a></li>
                 <li><a href="application-history.php">Riwayat Lamaran</a></li>
+                <li><a href="profile.php">Profil</a></li>
                 <li><a href="logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
                 <?php else: ?>
                 <li><a href="signup.php" class="button-outlined">Daftar</a></li>

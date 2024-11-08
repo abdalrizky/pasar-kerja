@@ -7,6 +7,71 @@ main {
     padding: 2rem;
 }
 
+header {
+    background-color: rgba(14, 83, 151, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+    padding: 24px 48px 24px 48px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    left: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
+header a {
+    text-decoration: none;
+}
+
+
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+    display: inline;
+}
+
+.logo .pasar {
+    color: #FFFFFF;
+}
+
+.logo .kerja {
+    color: #FFA500;
+    font-style: italic;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav ul li a.button {
+    padding: 0.5rem 1rem;
+    border: 2px solid #FFA500; /* Oranye */
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a.button:hover {
+    background-color: #FFA500; /* Oranye */
+    color: #FFFFFF;
+}
+
 .head-text {
     text-align: center;
 }
