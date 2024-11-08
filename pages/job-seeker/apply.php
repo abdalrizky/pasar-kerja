@@ -4,15 +4,26 @@ session_start();
 
 require '../../utils/database/helper.php';
 
-// var_dump($_SESSION);
-$jobSeekerId = $_SESSION['user']['id'];
-
 $jobId = $_GET['id'];
+$jobSeekerId = $_SESSION['user']['id'];
+// var_dump($_SESSION)
 $job = fetch("SELECT companies.logo, jobs.title, companies.name as 'company_name' FROM jobs
                 JOIN employers ON jobs.employer_id = employers.id
                 JOIN companies ON employers.company_id = companies.id
                 WHERE jobs.id=$jobId")[0];
-$jobSeeker = fetch("SELECT * FROM job_seekers WHERE id=$jobSeekerId");
+$jobSeeker = fetch("SELECT * FROM job_seekers WHERE id=$jobSeekerId")[0];
+
+if (isset($_POST['submit'])) {
+    $submittedAt = time();
+
+    $sql = execDML("INSERT INTO job_applications VALUES (null, $jobId, $jobSeekerId, $submittedAt)");
+
+    if ($sql > 0) {
+        echo "<script>alert('Berhasil melamar!'); document.location.href='application-history.php'</script>";
+    } else {
+        echo "<script>alert('Gagal melamar!'); document.location.href='application-history.php'</script>";
+    }
+}
 
 ?>
 
@@ -37,6 +48,7 @@ $jobSeeker = fetch("SELECT * FROM job_seekers WHERE id=$jobSeekerId");
                 <?php if (isset($_SESSION['login'])): ?>
                 <li><a href="bookmark.php">Bookmark</a></li>
                 <li><a href="application-history.php">Riwayat Lamaran</a></li>
+                <li><a href="profile.php">Profil</a></li>
                 <li><a href="../logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
                 <?php else: ?>
                 <li><a href="signup.php" class="button-outlined">Daftar</a></li>
@@ -76,23 +88,23 @@ $jobSeeker = fetch("SELECT * FROM job_seekers WHERE id=$jobSeekerId");
                 <input type="file" name="job-seeker-photo">
                 <p>*Jika Anda tidak memasukkan gambar, maka foto di profil Anda yang akan dikirimkan.</p>
                 <label for="job-seeker-name">Nama Lengkap</label>
-                <input type="text" name="job-seeker-name" required>
+                <input type="text" name="job-seeker-name" value="<?= $jobSeeker['name'] ?>" required>
                 <div class="birthday-detail-input">
                     <div>
                         <label for="job-seeker-place-of-birth">Tempat Lahir</label>
-                        <input type="text" name="job-seeker-place-of-birth" required>
+                        <input type="text" name="job-seeker-place-of-birth" value="<?= $jobSeeker['place_of_birth'] ?>" required>
                     </div>
                     <div>
                         <label for="job-seeker-birthday">Tanggal Lahir</label>
-                        <input type="date" name="job-seeker-birthday" required>
+                        <input type="date" name="job-seeker-birthday" value="<?= $jobSeeker['date_of_birth'] ?>" required>
                     </div>
                 </div>
                 <label for="gender">Jenis Kelamin</label>
-                <input type="text" name="gender" required>
+                <input type="text" name="gender" value="<?= $jobSeeker['gender'] ?>" required>
                 <label for="passion">Passion</label>
-                <input type="text" name="passion" required>
+                <input type="text" name="passion" value="<?= $jobSeeker['passion'] ?>" required>
                 <label for="biography">Biografi</label>
-                <textarea name="biography" id="biography"></textarea>
+                <textarea name="biography" id="biography"><?= $jobSeeker['biography'] ?></textarea>
                 <button type="submit" name="submit">Kirim Lamaran</button>
             </form>
         </section>
