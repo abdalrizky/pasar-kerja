@@ -1,0 +1,76 @@
+@import "../style.css";
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 2rem;
+}
+
+.head-text {
+    text-align: center;
+}
+
+.head-text h1 {
+    font-size: 42px;
+}
+
+.head-text p {
+    color: gray;
+}
+
+.profile-information {
+    margin-top: 60px;
+}
+
+.renew-profile-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: rgba(14, 83, 151, 0.8);
+    text-decoration: none;
+    color: white;
+    border-radius: 16px;
+}
+
+.profile-picture {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture img {
+    max-width: 130px;
+    max-height: 130px;
+}
+
+.profile-picture p {
+    margin-left: 16px;
+}
+
+label {
+    display: block;
+}
+
+input {
+    margin-top: 4px;
+    height: 48px;
+    padding: 16px;
+    border-radius: 16px;
+    border: none;
+}
+
+label {
+    margin-top: 16px;
+}
+
+label, input, textarea {
+    width: 100%;
+}
+
+textarea {
+    height: 200px;
+    border-radius: 16px;
+    padding: 16px;
+    border: none;
+    resize: none;
+}
