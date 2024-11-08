@@ -24,7 +24,11 @@ if (isset($_POST['signup'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $roleId = $_POST['signup-as'];
-    $companyId = $_POST['companies'];
+    $companyId = null;
+    if ($roleId == 2) {
+        $companyId = $_POST['companies'];
+    }
+    
     $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
     $checkEmail = fetch("SELECT email FROM credentials WHERE email='$email'");

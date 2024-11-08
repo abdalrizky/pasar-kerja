@@ -20,7 +20,6 @@ $job = fetch("SELECT jobs.title, employers.name as 'employer_name', jobs.posted_
                 JOIN companies ON employers.company_id = companies.id
                 JOIN job_categories ON jobs.category_id = job_categories.id
                 WHERE jobs.id=$jobId");
-                var_dump($job);
 
 $jobApplications = fetch("SELECT job_seekers.name as 'employer_name', job_applications.submitted_at
                             FROM job_applications
@@ -86,14 +85,19 @@ if (count($job) !== 0) {
 
             <section class="job-applications-submitted">
                 <h2>Daftar Lamaran yang Telah Masuk</h2>
-                <div class="application-list">
-                    <?php foreach ($jobApplications as $jobApplication): ?>
-                    <div class="application">
-                        <h3><?= $jobApplication['employer_name'] ?></h3>
-                        <p>Dikirim pada <?= $jobApplication['submitted_at'] ?></p>
-                        <a href="application-detail.php?id=1" class="view-application">Lihat Detail</a>
+                <?php if (count($jobApplications) !== 0): ?>
+                    <div class="application-list">
+                        <?php foreach ($jobApplications as $jobApplication): ?>
+                        <div class="application">
+                            <h3><?= $jobApplication['employer_name'] ?></h3>
+                            <p>Dikirim pada <?= $jobApplication['submitted_at'] ?></p>
+                            <a href="application-detail.php?id=1" class="view-application">Lihat Detail</a>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
-                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Belum ada lamaran yang masuk</p>
+                <?php endif; ?>
             </section>
         </main>
     </div>

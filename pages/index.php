@@ -1,8 +1,16 @@
 <?php
 
-require '../utils/database/helper.php';
-
 session_start();
+
+if (isset($_SESSION['login'])) {
+    if ($_SESSION['user']['role_id'] != 1) {
+        header('Location: employer/dashboard.php');
+    }
+} else {
+    header('Location: login.php');
+}
+
+require '../utils/database/helper.php';
 
 $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, companies.name AS 'company_name', jobs.location
                 FROM jobs

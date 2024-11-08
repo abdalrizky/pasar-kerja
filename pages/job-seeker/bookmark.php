@@ -8,7 +8,8 @@ $bookmarks = fetch("SELECT jobs.id AS 'job_id', jobs.title, companies.logo, comp
                         FROM bookmarks
                         JOIN job_seekers ON bookmarks.job_seeker_id = job_seekers.id
                         JOIN jobs ON bookmarks.job_id = jobs.id
-                        JOIN companies ON jobs.company_id = companies.id");
+                        JOIN employers ON jobs.employer_id = employers.id
+                        JOIN companies ON employers.company_id = companies.id");
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ $bookmarks = fetch("SELECT jobs.id AS 'job_id', jobs.title, companies.logo, comp
 
 <body>
     <header>
-        <a href="../pages/index.php">
+        <a href="../index.php">
             <h1><span style="color: white;">Pasar</span><span style="color: orange; font-style: italic;">Kerja</span>
             </h1>
         </a>
