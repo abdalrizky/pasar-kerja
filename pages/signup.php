@@ -26,7 +26,7 @@ if (isset($_POST['signup'])) {
             if ($roleId == 1) {
                 execDML("INSERT INTO job_seekers VALUES (null, $credentialRecentlyCreated, '$name', null, null, null, null, null, null)");
             } else if ($roleId == 2) {
-                execDML("INSERT INTO employers VALUES (null, $credentialRecentlyCreated, 1, '$name', 'verified')");
+                execDML("INSERT INTO employers VALUES (null, $credentialRecentlyCreated, null, '$name', null, 'unverified')");
             }
 
             $errorState = [
