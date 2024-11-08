@@ -128,11 +128,6 @@ form button {
     margin-bottom: 16px;
 }
 
-form button:hover {
-    background-color: #45a049;
-}
-
-/* Responsive Styles */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
