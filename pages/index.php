@@ -11,7 +11,6 @@ $jobs = fetch("SELECT jobs.id, companies.logo AS 'company_logo', jobs.title, com
                 JOIN job_categories ON jobs.category_id = job_categories.id
                 LIMIT 4");
 
-
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,15 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION['login'])) {
+    if ($_SESSION['user']['role_id'] != 2) {
+        header('Location: ../index.php');
+    }
+} else {
+    header('Location: ../login.php');
+}
+
 require '../../utils/database/helper.php';
 
 $jobId = $_GET['id'];

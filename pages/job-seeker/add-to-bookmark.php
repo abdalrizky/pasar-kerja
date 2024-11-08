@@ -1,8 +1,8 @@
 <?php
 
-require '../../utils/database/helper.php';
-
 session_start();
+
+require '../../utils/database/helper.php';
 
 $jobSeekerId = $_SESSION['user']['id'];
 $jobId = $_GET['id'];
