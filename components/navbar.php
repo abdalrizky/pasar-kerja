@@ -8,7 +8,7 @@
     <nav>
         <ul>
             <li><a href="index.php">Beranda</a></li>
-            <li><a href="tips_loker.php">Tips Loker</a></li>
+            <li><a href="../pages/job-seeker/bookmark.php">Bookmark</a></li>
             <li><a href="job_seeker_dashboard.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
         </ul>
     </nav>
