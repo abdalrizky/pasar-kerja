@@ -6,8 +6,6 @@ if (isset($_SESSION['login'])) {
     if ($_SESSION['user']['role_id'] != 1) {
         header('Location: employer/dashboard.php');
     }
-} else {
-    header('Location: login.php');
 }
 
 require '../utils/database/helper.php';

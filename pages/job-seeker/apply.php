@@ -6,7 +6,7 @@ require '../../utils/database/helper.php';
 
 $jobId = $_GET['id'];
 $jobSeekerId = $_SESSION['user']['id'];
-// var_dump($_SESSION)
+
 $job = fetch("SELECT companies.logo, jobs.title, companies.name as 'company_name' FROM jobs
                 JOIN employers ON jobs.employer_id = employers.id
                 JOIN companies ON employers.company_id = companies.id

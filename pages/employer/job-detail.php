@@ -26,7 +26,6 @@ $jobApplications = fetch("SELECT job_seekers.name as 'employer_name', job_applic
                             FROM job_applications
                             JOIN job_seekers ON job_applications.job_seeker_id = job_seekers.id
                             WHERE job_applications.job_id=$jobId");
-                        var_dump($jobApplications);
 
 if (count($job) !== 0) {
     $job = $job[0];

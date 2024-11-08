@@ -37,7 +37,7 @@ $jobApplications = fetch("SELECT job_applications.submitted_at, jobs.title, jobs
                     <li><a href="bookmark.php">Bookmark</a></li>
                     <li><a href="application-history.php">Riwayat Lamaran</a></li>
                     <li><a href="profile.php">Profil</a></li>
-                    <li><a href="logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
+                    <li><a href="../logout.php">Hai, <?= $_SESSION['user']['name'] ?></a></li>
                     <?php else: ?>
                     <li><a href="signup.php" class="button-outlined">Daftar</a></li>
                     <li><a href="login.php">Masuk</a></li>

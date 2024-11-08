@@ -13,7 +13,6 @@ if (isset($_SESSION['login'])) {
 require '../../utils/database/helper.php';
 
 $employerId = $_SESSION['user']['id'];
-var_dump($employerId);
 
 $profileInfo = fetch("SELECT employers.name AS 'employer_name', employers.photo, companies.name AS 'company_name', employers.status
                         FROM employers 
