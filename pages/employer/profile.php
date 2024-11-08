@@ -1,3 +1,19 @@
+<?php
+
+require '../../utils/database/helper.php';
+
+session_start();
+
+$employerId = $_SESSION['user']['id'];
+var_dump($employerId);
+
+$profileInfo = fetch("SELECT employers.name AS 'employer_name', employers.photo, companies.name AS 'company_name', employers.status
+                        FROM employers 
+                        JOIN companies ON employers.company_id = companies.id
+                        WHERE employers.id='$employerId'")[0];
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -35,11 +51,11 @@
 
             <div class="profile-details">
                 <img class="profile-photo" src="https://placehold.co/100x100" alt="Muhammad Abdal Rizky">
-                <p>Muhammad Abdal Rizky</p>
+                <p><?= $profileInfo['employer_name'] ?></p>
                 <p>Terdaftar di:</p>
-                <p>PT Telkom Indonesia</p>
+                <p><?= $profileInfo['company_name'] ?></p>
                 <p>Status Verifikasi:</p>
-                <p>Terverifikasi</p>
+                <p><?= ($profileInfo['status'] === "verified") ? "Terverifikasi" : "Belum Terverifikasi" ?></p>
             </div>
         </main>
     </div>
