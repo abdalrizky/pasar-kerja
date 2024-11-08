@@ -13,6 +13,7 @@ body {
     display: flex;
     width: 70%;
     max-width: 1000px;
+    max-height: 670px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -25,7 +26,7 @@ main .logo {
 }
 
 .logo span {
-    color: #4caf50;
+    color: orange;
     font-style: italic;
 }
 
@@ -70,13 +71,13 @@ main div span {
     padding: 8px 16px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    color: #cdc5c5;
+    color: #000;
     transition: background-color 0.3s;
     margin-bottom: 16px;
 }
 
 main div span:hover {
-    background-color: #e8f5e9;
+    background-color: #e8eff5;
 }
 
 form {
@@ -100,7 +101,7 @@ form input {
 
 form button {
     padding: 12px 20px;
-    background-color: #4caf50;
+    background-color: rgba(14, 83, 151, 0.8);
     color: #fff;
     border: none;
     border-radius: 12px;
@@ -116,11 +117,12 @@ form button {
 
 .already-have-account a {
     text-decoration: none;
-    color: #4caf50;
+    color: rgba(14, 83, 151, 0.8);
 }
 
 .signup-as-selected {
-    background-color: #45a049;
+    background-color: rgba(14, 83, 151, 0.8);
+    color: #fff;
 }
 
 .error-message-box {
@@ -139,10 +141,6 @@ form button {
     padding: 12px;
     border-radius: 4px;
     margin-bottom: 16px;
-}
-
-form button:hover {
-    background-color: #45a049;
 }
 
 /* Responsive Styles */

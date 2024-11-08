@@ -65,7 +65,8 @@ if (isset($_POST['login'])) {
 <body>
     <div class="container">
         <aside>
-            <img src="https://placehold.co/100x100" alt="">
+            <!-- <img src="https://placehold.co/100x100" alt=""> -->
+             <img src="../assets/img/credential-banner.jpg" alt="">
         </aside>
         <main>
             <p class="logo">Pasar<span>Kerja</span></p>

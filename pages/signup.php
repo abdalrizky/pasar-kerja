@@ -66,7 +66,7 @@ if (isset($_POST['signup'])) {
 <body>
     <div class="container">
         <aside>
-            <img src="https://placehold.co/100x100" alt="">
+            <img src="../assets/img/credential-banner.jpg" alt="">
         </aside>
         <main>
             <p class="logo">Pasar<span>Kerja</span></p>
@@ -88,13 +88,13 @@ if (isset($_POST['signup'])) {
                 <label for="password-confirm">Konfirmasi Kata Sandi</label>
                 <input type="password" name="password-confirm" id="password-confirm" required>
                 <?php if (isset($_POST['signup']) && $errorState['status']): ?>
-                    <div class="error-message-box">
-                        <p class="error-message-text"><?= $errorState['message'] ?></p>
-                    </div>
+                <div class="error-message-box">
+                    <p class="error-message-text"><?= $errorState['message'] ?></p>
+                </div>
                 <?php elseif (isset($_POST['signup']) && !$errorState['status']): ?>
-                    <div class="success-message-box">
-                        <p class="success-message-text"><?= $errorState['message'] ?></p>
-                    </div>
+                <div class="success-message-box">
+                    <p class="success-message-text"><?= $errorState['message'] ?></p>
+                </div>
                 <?php endif; ?>
                 <button type="submit" name="signup">Daftar</button>
             </form>
